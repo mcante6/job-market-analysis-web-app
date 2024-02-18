@@ -1,8 +1,12 @@
 # Job Market Analysis Web App
 
 ## Overview
-
+https://jobmarket.streamlit.app/
 This project provides a dynamic and interactive way to visualize the IT job market in the USA, focusing on data collected from Dice.com. Born out of the frustration of navigating through outdated job market information online, this web app aims to offer up-to-date insights into the demand for various IT skills, job types, and the availability of positions across different locations.
+
+## Access the Web App
+
+Explore the IT job market in real-time by visiting the web app at [Job Market Analysis](https://jobmarket.streamlit.app/).
 
 The web app is developed using Streamlit and showcases data collected through a sophisticated web scraping mechanism. The collected data is stored in an SQLite database, allowing for efficient data management and retrieval. This approach enables users to explore the IT job market with current and relevant data, aiding job seekers, recruiters, and market analysts in making informed decisions.
 
