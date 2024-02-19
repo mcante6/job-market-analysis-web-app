@@ -1,5 +1,5 @@
 # Job Market Analysis Web App
-![PowerBI]([https://github.com/mcante6/job-market-analysis-web-app/blob/main/image.png])
+![PowerBI]([image.png])
 ## Overview
 https://jobmarket.streamlit.app/
 This project provides a dynamic and interactive way to visualize the IT job market in the USA, focusing on data collected from Dice.com. Born out of the frustration of navigating through outdated job market information online, this web app aims to offer up-to-date insights into the demand for various IT skills, job types, and the availability of positions across different locations.
