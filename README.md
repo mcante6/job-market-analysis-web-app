@@ -35,6 +35,7 @@ The motivation behind this project stems from the challenge of finding accurate 
 - **Streamlit:** Framework for creating the interactive web app.
 - **Pandas:** Data analysis and manipulation.
 - **Matplotlib:** Data visualization.
+- **Plotly** Data visualization.
 
 ## How to Use
 
@@ -47,7 +48,7 @@ The motivation behind this project stems from the challenge of finding accurate 
 ## Project Structure
 
 - `scraper.py`: Script for web scraping job data.
-- `database.py`: Handles database operations.
+- `jobs.db`: SQL file with all data collected.
 - `webapp.py`: Streamlit web app for data visualization.
 - `requirements.txt`: Lists all the Python packages required for the project.
 
