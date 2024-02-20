@@ -14,6 +14,23 @@ def load_data(table_name):
     conn.close()
     return df
 
+# New Function to create a histogram of total jobs over time
+def display_jobs_over_time(table_name):
+    conn = get_connection()
+    # Assuming you have a date column in your table to aggregate data by day
+    query = f"SELECT collection_date, SUM(total_jobs) as total_jobs FROM {table_name} GROUP BY collection_date"
+    df = pd.read_sql(query, conn)
+    conn.close()
+    
+    # Convert collection_date to datetime format for better handling and sorting
+    df['collection_date'] = pd.to_datetime(df['collection_date'])
+    df.sort_values('collection_date', inplace=True)
+    
+    # Create the histogram
+    fig = px.bar(df, x='collection_date', y='total_jobs', title='Total Jobs Over Time')
+    fig.update_xaxes(categoryorder='category ascending')  # Ensure the dates are in ascending order
+    st.plotly_chart(fig)
+
 # Enhanced Dynamic Bubble Map Visualization
 def display_dynamic_bubble_map(df):
     # User selection for the type of bubble map
@@ -120,7 +137,7 @@ def main():
 
     analysis_type = st.sidebar.radio(
         "Select Analysis Type",
-        ['Bubble Map','Top 10 Skills by Location', 'Jobs by Skill Across Locations', 'Total Jobs by Skill', 'Total Jobs by Location', 'Remote Job Skills'],
+        ['Bubble Map','Top 10 Skills by Location', 'Jobs by Skill Across Locations', 'Total Jobs by Skill', 'Total Jobs by Location', 'Remote Job Skills', 'Jobs Over Time'],
         key='analysis_type'
     )
 
@@ -140,6 +157,9 @@ def main():
     elif analysis_type == 'Bubble Map':
         st.header('Dynamic Bubble Map Visualization')
         display_dynamic_bubble_map(df)
+    elif analysis_type == 'Jobs Over Time':
+        st.header('Total Jobs Over Time')
+        display_jobs_over_time(table_name)  # Call the new function
     elif analysis_type == 'Jobs by Skill Across Locations':
         # Aggregate total jobs for each skill and sort them in descending order
         skills_total_jobs = df.groupby('skill')['total_jobs'].sum().sort_values(ascending=False).reset_index()
